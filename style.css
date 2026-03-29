@@ -1,0 +1,465 @@
+/* --- ძირითადი პარამეტრები --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333333;
+    font-family: 'Noto Sans Georgian', 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- ნავიგაცია --- */
+.navbar {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 12px 0;
+    border-bottom: 1px solid #eeeeee;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 3%;
+}
+
+/* ლოგოს კონტეინერი */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 100%; /* იკავებს ნავბარის სრულ სიმაღლეს */
+}
+
+/* ლოგოს სურათის პარამეტრები */
+.logo-link img {
+    height: 50px; /* იდეალური სიმაღლე 80px-იანი ჰეადერისთვის */
+    width: auto;  /* სიგანე პროპორციულად შენარჩუნდება */
+    display: block;
+    object-fit: contain; /* იცავს ლოგოს დეფორმაციისგან */
+    transition: transform 0.3s ease; /* მსუბუქი ანიმაციისთვის */
+}
+
+
+
+/* მენიუ */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333333;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 5px;
+    transition: 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #88B788;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover::after, 
+.nav-links a.active-link::after {
+    width: 100%;
+}
+
+.nav-links a:hover { color: #88B788; }
+
+/* ძებნა და ენები */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: #f8f8f8;
+    border-radius: 20px;
+    padding: 5px 15px;
+    transition: 0.3s;
+    border: 1px solid transparent;
+}
+
+.search-box:focus-within {
+    background: #ffffff;
+    border-color: #88B788;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    padding: 5px;
+    font-size: 13px;
+    color: #333;
+    width: 120px;
+    transition: 0.3s;
+}
+
+.search-box input:focus { width: 180px; }
+
+.search-box button {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 8px;
+}
+
+.lang-switcher a {
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    color: #bbbbbb;
+    transition: 0.3s;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.lang-switcher a.active-lang {
+    color: #333333;
+    border-bottom: 1.5px solid #88B788;
+}
+
+
+/* 1. ყველანაირი დაშორების გაუქმება */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* 2. მთავარი კონტეინერი */
+.hero {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* ეკრანის სრული სიმაღლე */
+}
+
+/* 3. მარცხენა მხარე (ტექსტისთვის - ჯერ ცარიელი) */
+.left-section {
+    flex: 1;
+    background-color: #ffffff;
+}
+
+/* 4. მარჯვენა მხარე (ფოტოსთვის) */
+.right-section {
+    flex: 1;
+    height: 100%;
+}
+
+.right-section img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* ეს აიძულებს ფოტოს შეავსოს მთელი მარჯვენა მხარე */
+}
+
+
+/* სრული გასუფთავება კონკრეტულად ამ სექციისთვის */
+.hero-fix {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important; /* ზუსტად შუაზე ყოფს */
+    width: 100% !important;
+    height: 100vh !important; /* სრული ეკრანი */
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* მარცხენა მხარე - ტექსტის განთავსება */
+.hero-left-fix {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important; /* ვერტიკალურად შუაში */
+    align-items: center !important; /* ჰორიზონტალურად შუაში */
+    background-color: #ffffff !important;
+    padding: 0 10% !important;
+}
+
+.hero-inner-content {
+    max-width: 500px !important;
+    text-align: left !important;
+}
+
+/* ტექსტის სტილები */
+.hero-tag { color: #88B788; text-transform: uppercase; font-size: 11px; font-weight: 700; letter-spacing: 2px; display: block; margin-bottom: 15px; }
+.hero-title { font-size: 48px; line-height: 1.1; font-weight: 800; color: #333; margin-bottom: 25px; }
+.green-accent { color: #88B788; }
+.hero-desc { font-size: 16px; color: #666; line-height: 1.6; margin-bottom: 35px; }
+
+/* ღილაკები */
+.hero-btns-fix { display: flex; gap: 15px; }
+.btn-black { padding: 16px 32px; background: #333; color: #fff !important; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; }
+.btn-outline { padding: 16px 32px; border: 1px solid #333; color: #333 !important; text-decoration: none; font-weight: 700; font-size: 11px; text-transform: uppercase; }
+
+/* მარჯვენა მხარე - ფოტო */
+.hero-right-fix {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: hidden !important;
+}
+
+.hero-right-fix img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* ფოტო ავსებს სივრცეს */
+    display: block !important;
+}
+
+/* --- Hero Sección - საბოლოო და გამართული ვერსია --- */
+
+/* 1. Reset - შლის დაშორებებს კიდეებთან */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 2. Body და HTML სრული ეკრანისთვის */
+body, html { width: 100%; height: 100%; overflow-x: hidden; }
+
+/* 3. Hero კონტეინერი - ყოფს ეკრანს ორად */
+.hero {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 80px); /* სიმაღლე მენიუს გარეშე */
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+/* 4. მარცხენა მხარე - ტექსტი */
+.hero-left {
+    flex: 1; /* იკავებს ეკრანის ნახევარს */
+    display: flex;
+    align-items: center; /* ვერტიკალურად დაცენტრირება */
+    justify-content: center; /* ჰორიზონტალურად დაცენტრირება */
+    padding: 0 10%; /* გვერდითა დაშორებები */
+}
+
+.hero-content {
+    max-width: 500px;
+}
+
+/* ტექსტის სტილები */
+.hero-subtitle {
+    display: block;
+    color: #88B788;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.hero-title {
+    font-size: 45px;
+    line-height: 1.2;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+.accent-color {
+    color: #88B788;
+}
+
+.hero-description {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* ღილაკების ბლოკი */
+.hero-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* მთავარი ღილაკი */
+.btn-fill {
+    padding: 16px 32px;
+    background: #333;
+    color: #fff !important; /* რომ ლურჯი არ იყოს */
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+}
+
+.btn-fill:hover {
+    background: #88B788;
+}
+
+/* outline ღილაკი */
+.btn-outline {
+    padding: 16px 32px;
+    border: 1px solid #333;
+    color: #333 !important;
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    border-color: #88B788;
+    color: #88B788 !important;
+}
+
+
+/* 1. Reset - ყველანაირი დაშორების გაუქმება (აუცილებელია!) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+
+
+/* აქედან იწყება ჰერო */
+
+/* საბაზისო პარამეტრები */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #fff;
+}
+
+/* Hero კონტეინერი */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 600px; /* შენი ფოტოს სიმაღლე */
+    overflow: hidden;
+}
+
+/* ფოტოს გასწორება */
+.hero-image-container {
+    width: 100%;
+    height: 100%;
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* ფოტო არ გაიწელება, ლამაზად შეივსება */
+    display: block;
+}
+
+/* ტექსტის ფენა (მომავლისთვის) */
+.hero-text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center; /* ტექსტს ვერტიკალურად გაასწორებს */
+    padding-left: 10%; /* ტექსტს მარცხნიდან ცოტას გამოწევს */
+}
+
+/* აქედან იწყება ჰეროში ტექსტი და ლინკი */
+
+
+/* ტექსტის კონტეინერის გასწორება */
+.hero-text-side {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center; /* ვერტიკალურად ცენტრში */
+    justify-content: center; /* ჰორიზონტალურად ცენტრში */
+    background-color: #ffffff;
+}
+
+.content-wrapper {
+    max-width: 450px; /* რომ ტექსტი ძალიან არ გაიწელოს */
+    padding: 20px;
+}
+
+.tag {
+    color: #88B788;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 42px;
+    color: #333;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+/* ლინკის სტილი */
+.hero-link {
+    font-size: 14px;
+    font-weight: 700;
+    color: #333;
+    text-decoration: none; /* ხაზის მოცილება */
+    text-transform: uppercase;
+    border-bottom: 2px solid #88B788; /* ქვედა ხაზი მწვანედ */
+    padding-bottom: 5px;
+    transition: 0.3s;
+}
+
+.hero-link:hover {
+    color: #88B788;
+    letter-spacing: 1px; /* მაუსის მიტანისას მცირე ეფექტი */
+}
