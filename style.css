@@ -12,44 +12,29 @@ body {
     line-height: 1.6;
 }
 
-/* --- ნავიგაცია --- */
+/* ნავიგაციის მთავარი კონტეინერი */
 .navbar {
     width: 100%;
-    background-color: #ffffff;
-    padding: 12px 0;
-    border-bottom: 1px solid #eeeeee;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+    background: #fff;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
 }
 
 .nav-container {
-    max-width: 1440px;
+    max-width: 1400px;
     margin: 0 auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* ყოფს სამ ნაწილად: მარცხენა, შუა, მარჯვენა */
     align-items: center;
-    padding: 0 3%;
+    padding: 0 40px;
 }
 
-/* ლოგოს კონტეინერი */
-.logo-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    height: 100%; /* იკავებს ნავბარის სრულ სიმაღლეს */
-}
-
-/* ლოგოს სურათის პარამეტრები */
+/* ლოგო */
 .logo-link img {
-    height: 50px; /* იდეალური სიმაღლე 80px-იანი ჰეადერისთვის */
-    width: auto;  /* სიგანე პროპორციულად შენარჩუნდება */
+    height: 50px; /* სქრინის მიხედვით ოდნავ მოზრდილი ლოგო */
+    width: auto;
     display: block;
-    object-fit: contain; /* იცავს ლოგოს დეფორმაციისგან */
-    transition: transform 0.3s ease; /* მსუბუქი ანიმაციისთვის */
 }
-
-
 
 /* მენიუ */
 .nav-links {
@@ -149,6 +134,110 @@ body {
 .lang-switcher a.active-lang {
     color: #333333;
     border-bottom: 1.5px solid #88B788;
+}
+
+/* ენების გადამრთველი */
+.lang-switcher {
+    display: flex;
+    gap: 10px;
+}
+
+.lang-switcher a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+}
+
+.lang-switcher a.active-lang {
+    color: #333;
+    border-bottom: 2px solid #88B788;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* ხატულების სტილი */
+.user-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.user-actions a {
+    color: #333;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+}
+
+.user-actions a:hover {
+    color: #88B788;
+}
+
+/* კალათის ციფრის სტილი */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #88B788;
+    color: white;
+    font-size: 10px;
+    padding: 2px 5px;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+/* ენების ჩამოსაშლელი (Dropdown) */
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-weight: 700;
+    font-size: 13px;
+    cursor: pointer;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.lang-options {
+    display: none; /* თავიდან დამალულია */
+    position: absolute;
+    right: 0;
+    background: #fff;
+    min-width: 45px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.lang-options a {
+    color: #333;
+    padding: 8px 12px;
+    text-decoration: none;
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.lang-options a:hover {
+    background-color: #f1f1f1;
+    color: #88B788;
+}
+
+/* მაუსის მიტანისას გამოჩნდეს მენიუ */
+.lang-dropdown:hover .lang-options {
+    display: block;
 }
 
 
