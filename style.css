@@ -195,11 +195,105 @@ body {
 /* ძიებია */
 
 
-.search-trigger:hover i {
-    color: #F57E20;
+.search-container {
+    position: relative; /* რომ ჩამოსაშლელი ველი მას მიებას */
+    display: flex;
+    align-items: center;
 }
 
+.search-dropdown {
+    position: absolute;
+    top: 50px; /* იკონიდან დაშორება ქვემოთ */
+    right: 0;
+    width: 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    display: flex;
+    gap: 10px;
+    
+    /* თავიდან დამალულია */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1001;
+}
 
+/* როცა გააქტიურდება */
+.search-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-dropdown input {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-family: 'AlgetiCustom', serif;
+}
+
+.search-submit {
+    background: #F57E20;
+    color: #fff;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'AlgetiCustom', serif;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-dropdown {
+    position: absolute;
+    top: 45px; /* იკონიდან დაშორება */
+    right: 0;
+    width: 280px;
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    gap: 8px;
+    /* ეფექტები */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+    z-index: 9999;
+}
+
+.search-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-family: 'AlgetiCustom', serif;
+}
+
+.search-submit {
+    background: #F57E20;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-family: 'AlgetiCustom', serif;
+}
 
 /* ძიებია */
 
@@ -249,3 +343,144 @@ body {
     background-color: #F57E20;
     /* ... დანარჩენი ზომები რაც გეწერა იგივე დარჩეს ... */
 }
+
+/* cart-wrapper */
+.cart-wrapper {
+    position: relative;
+}
+
+.cart-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 300px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1002;
+    /* თავიდან დამალულია */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+}
+
+.cart-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* ნივთების სტილი შიგნით */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.cart-item img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.item-name {
+    font-family: 'AlgetiCustom', serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+/* ღილაკების სტილი */
+.cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-view-cart, .btn-checkout {
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
+    font-family: 'AlgetiCustom', serif;
+    border-radius: 4px;
+}
+
+.btn-view-cart {
+    background: #f4f4f4;
+    color: #333;
+}
+
+.btn-checkout {
+    background: #F57E20;
+    color: #fff;
+}
+
+/* cart-wrapper and */
+
+/* wish */
+
+.wishlist-wrapper {
+    position: relative;
+}
+
+.wishlist-dropdown {
+    position: absolute;
+    top: 45px;
+    right: 0;
+    width: 260px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: 0.3s ease;
+}
+
+.wishlist-dropdown.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.wishlist-header {
+    font-family: 'AlgetiCustom', serif;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.empty-msg {
+    font-size: 13px;
+    color: #888;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.btn-all-wishlist {
+    display: block;
+    text-align: center;
+    font-size: 13px;
+    color: #F57E20;
+    text-decoration: none;
+    margin-top: 10px;
+    font-family: 'AlgetiCustom', serif;
+}
+
+/* wish and*/

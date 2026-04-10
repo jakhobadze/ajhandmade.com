@@ -35,14 +35,63 @@
 
         <div class="header-right">
              <div class="user-actions">
-              <a href="#" class="search-trigger"><i class="fa-solid fa-magnifying-glass"></i></a>
-             <a href="#"><i class="fa-regular fa-user"></i></a>
-         <a href="#"><i class="fa-regular fa-heart"></i></a>
-         <div class="cart-wrapper">
-            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
-            <span class="cart-badge">0</span>
+                <div class="search-container">
+    <a href="#" class="search-trigger" id="searchBtn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+    </a>
+    
+    <div class="search-dropdown" id="searchDropdown">
+        <input type="text" placeholder="ჩაწერეთ საძიებო სიტყვა..." class="search-input">
+        <button type="submit" class="search-submit">ძებნა</button>
+    </div>
+</div>
+
+    <a href="#"><i class="fa-regular fa-user"></i></a>
+    
+    <div class="wishlist-wrapper" id="wishlistWrapper">
+    <a href="#" id="wishlistBtn">
+        <i class="fa-regular fa-heart"></i>
+    </a>
+
+    <div class="wishlist-dropdown" id="wishlistDropdown">
+        <div class="wishlist-header">ჩემი ფავორიტები</div>
+        <div class="wishlist-items">
+            <p class="empty-msg">თქვენი სია ცარიელია</p>
+        </div>
+        <a href="wishlist.html" class="btn-all-wishlist">ყველას ნახვა</a>
+    </div>
+</div>
+    
+
+    <div class="cart-wrapper" id="cartWrapper">
+    <a href="#" id="cartBtn">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span class="cart-badge">2</span>
+    </a>
+
+    <div class="cart-dropdown" id="cartDropdown">
+        <div class="cart-items">
+            <div class="cart-item">
+                <img src="images/product1.jpg" alt="პროდუქტი">
+                <div class="item-info">
+                    <p class="item-name">ტყავის საფულე "ალგეთი"</p>
+                    <p class="item-price">1 x 85.00 ₾</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-total">
+            <span>ჯამი:</span>
+            <span>85.00 ₾</span>
+        </div>
+        
+        <div class="cart-actions">
+            <a href="cart.html" class="btn-view-cart">კალათის ნახვა</a>
+            <a href="checkout.html" class="btn-checkout">ყიდვა</a>
         </div>
     </div>
+</div>
+</div>
 </div>
 
     </div>
@@ -53,14 +102,83 @@
         </div>
     </section>
 <script>
+    // 1. სქროლის ეფექტი
     window.onscroll = function() {
-        var header = document.querySelector(".main-header");
+        const header = document.querySelector(".main-header");
         if (window.pageYOffset > 50) {
-            header.classList.add("scrolled"); // დაამატებს კლასს .scrolled, როცა 50px-ს ჩავცდებით
+            header.classList.add("scrolled");
         } else {
             header.classList.remove("scrolled");
         }
     };
+
+    // 2. ჩამოსაშლელი ძიების ლოგიკა
+    const searchBtn = document.getElementById('searchBtn');
+    const searchDropdown = document.getElementById('searchDropdown');
+    const searchContainer = document.querySelector('.search-container');
+
+    if (searchBtn && searchDropdown) {
+        searchBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation(); // რომ დაკლიკება სხვაგან არ "გავარდეს"
+            searchDropdown.classList.toggle('active');
+            
+            if(searchDropdown.classList.contains('active')) {
+                searchDropdown.querySelector('input').focus();
+            }
+        });
+
+        // თუ ეკრანზე სხვაგან დავაჭერთ, ძიება დაიხუროს
+        document.addEventListener('click', function(e) {
+            if (!searchContainer.contains(e.target)) {
+                searchDropdown.classList.remove('active');
+            }
+        });
+    }
+
+    const cartBtn = document.getElementById('cartBtn');
+const cartDropdown = document.getElementById('cartDropdown');
+const cartWrapper = document.getElementById('cartWrapper');
+
+cartBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    cartDropdown.classList.toggle('active');
+    
+    // თუ კალათა გაიხსნა, ძიება დაიხუროს (რომ არ გადაიფარონ)
+    if(typeof searchDropdown !== 'undefined') {
+        searchDropdown.classList.remove('active');
+    }
+});
+
+// სხვაგან დაკლიკებაზე დახურვა
+document.addEventListener('click', function(e) {
+    if (!cartWrapper.contains(e.target)) {
+        cartDropdown.classList.remove('active');
+    }
+});
+
+
+const wishlistBtn = document.getElementById('wishlistBtn');
+const wishlistDropdown = document.getElementById('wishlistDropdown');
+const wishlistWrapper = document.getElementById('wishlistWrapper');
+
+wishlistBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    wishlistDropdown.classList.toggle('active');
+    
+    // სხვა პანელები დავხუროთ
+    if(typeof searchDropdown !== 'undefined') searchDropdown.classList.remove('active');
+    if(typeof cartDropdown !== 'undefined') cartDropdown.classList.remove('active');
+});
+
+// გარეთ დაკლიკებაზე დახურვა
+document.addEventListener('click', function(e) {
+    if (!wishlistWrapper.contains(e.target)) {
+        wishlistDropdown.classList.remove('active');
+    }
+});
 </script>
 
 
