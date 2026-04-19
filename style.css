@@ -305,10 +305,11 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 900px;
-    background: url('images/hero-background.jpg') no-repeat center bottom;
-    background-size: cover;
-    margin-top: 0; /* ფოტო იწყება სულ ზემოდან */
+    height: 650px;
+    background-image: url('images/hero-background_2.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 650px; /* ძალისმიერად ვსვამთ შენს ზომებში */
+    background-position: center;
 }
 
 /* მუქი ფენა, რომ მენიუ უკეთ გამოჩნდეს (სურვილისამებრ) */
