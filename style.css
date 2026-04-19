@@ -24,16 +24,30 @@ body {
 
 /* 2. ჰეადერი და კონტეინერი */
 .main-header {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100px; /* მთლიანი ზოლის სიმაღლე */
+    height: 100px;
     z-index: 1000;
-    background: transparent;
     display: flex;
     align-items: center;
     padding: 0 50px;
+    background: transparent; /* თავიდან სრულიად გამჭვირვალეა */
+    transition: all 0.3s ease; /* რბილი გადასვლისთვის */
+}
+
+/* ეს კლასი დაემატება JavaScript-ით სქროლვის დროს */
+.main-header.scrolled {
+    background: rgba(255, 255, 255, 0.95); /* თეთრი ფონი სქროლვისას */
+    height: 80px; /* ოდნავ დაპატარავდება */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* მენიუს ტექსტების ფერი რომ არ დაიკარგოს თეთრზე */
+.main-header.scrolled .nav-links a, 
+.main-header.scrolled .icon-btn i {
+    color: #333; 
 }
 
 .container {
@@ -112,11 +126,14 @@ body {
     height: 4px;
     background-color: #a67c52;
 }
+
+
+
 /* ქვედა ხაზის სისქის კორექტირება */
 .main-nav ul li.active::after {
     content: '';
     position: absolute;
-    bottom: 5px; /* წინა ნაბიჯზე რომ დავწიეთ ის პოზიცია */
+    bottom: 10px; /* წინა ნაბიჯზე რომ დავწიეთ ის პოზიცია */
     left: 0;
     width: 35px;
     height: 4px; /* სისქე 3px-დან ავწიეთ 4px-ზე, რომ გასქელებულ შრიფტს მოუხდეს */
@@ -305,10 +322,10 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    height: 650px;
-    background-image: url('images/hero-background_2.jpg');
+    height: 750px;
+    background-image: url('images/hero-background_3.jpg');
     background-repeat: no-repeat;
-    background-size: 100% 650px; /* ძალისმიერად ვსვამთ შენს ზომებში */
+    background-size: 100% 750px; /* ძალისმიერად ვსვამთ შენს ზომებში */
     background-position: center;
 }
 
@@ -485,3 +502,54 @@ body {
 }
 
 /* wish and*/
+
+
+/* გალერეა */
+.home-gallery {
+    padding: 60px 0;
+    background-color: #ffffff;
+}
+
+.gallery-container {
+    display: grid;
+    /* ქმნის 3 თანაბარ სვეტს */
+    grid-template-columns: repeat(3, 1fr); 
+    /* დაშორება ფოტოებს შორის (როგორც ფოტოზეა) */
+    gap: 30px; 
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.gallery-item {
+    width: 100%;
+    /* ფოტოს სიმაღლე - შეგიძლია შეცვალო სურვილისამებრ */
+    height: 350px; 
+    overflow: hidden;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    /* ეს უზრუნველყოფს, რომ ფოტო არ გაიწელოს და ლამაზად ჩაჯდეს */
+    object-fit: cover; 
+    display: block;
+}
+
+/* ქვედა მარჯვენა ფოტო, რომელიც 2 სვეტს იკავებს */
+.gallery-item.wide {
+    grid-column: span 2;
+}
+
+/* მობილურისთვის რომ არ აირიოს */
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .gallery-item, .gallery-item.wide {
+        grid-column: auto;
+        height: 300px;
+    }
+}
+/* გალარეა and*/
