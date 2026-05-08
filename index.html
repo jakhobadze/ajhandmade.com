@@ -101,111 +101,84 @@
         
         </div>
     </section>
-
- <section class="home-gallery">
-    <div class="gallery-container">
-        <div class="gallery-item">
-            <img src="images/1.jpg" alt="ხელნაკეთი ნივთი">
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/2.jpg" alt="ხელნაკეთი ნივთი">
-        </div>
-        
-        <div class="gallery-item">
-            <img src="images/3.jpg" alt="ხელნაკეთი ნივთი">
-        </div>
-
-        <div class="gallery-item">
-            <img src="images/4.jpg" alt="ხელნაკეთი ნივთი">
-        </div>
-
-        <div class="gallery-item wide">
-            <img src="images/5.jpg" alt="ხელნაკეთი ნივთი">
-        </div>
-    </div>
-</section>
-
-
-
-
-
 <script>
-    // 1. სქროლის ეფექტი (ოპტიმიზებული - მხოლოდ ერთი ვერსია)
-    window.addEventListener('scroll', function() {
-        const header = document.querySelector('.main-header');
-        // window.scrollY უფრო თანამედროვეა, ვიდრე pageYOffset
-        if (window.scrollY > 50) {
-            header.classList.add('scrolled');
+    // 1. სქროლის ეფექტი
+    window.onscroll = function() {
+        const header = document.querySelector(".main-header");
+        if (window.pageYOffset > 50) {
+            header.classList.add("scrolled");
         } else {
-            header.classList.remove('scrolled');
+            header.classList.remove("scrolled");
         }
-    });
+    };
 
-    // ელემენტების სელექტორები
+    // 2. ჩამოსაშლელი ძიების ლოგიკა
     const searchBtn = document.getElementById('searchBtn');
     const searchDropdown = document.getElementById('searchDropdown');
     const searchContainer = document.querySelector('.search-container');
 
-    const cartBtn = document.getElementById('cartBtn');
-    const cartDropdown = document.getElementById('cartDropdown');
-    const cartWrapper = document.getElementById('cartWrapper');
-
-    const wishlistBtn = document.getElementById('wishlistBtn');
-    const wishlistDropdown = document.getElementById('wishlistDropdown');
-    const wishlistWrapper = document.getElementById('wishlistWrapper');
-
-    // დამხმარე ფუნქცია ყველა დროპდაუნის დასახურავად
-    function closeAllDropdowns() {
-        if (searchDropdown) searchDropdown.classList.remove('active');
-        if (cartDropdown) cartDropdown.classList.remove('active');
-        if (wishlistDropdown) wishlistDropdown.classList.remove('active');
-    }
-
-    // 2. ძიების ლოგიკა
     if (searchBtn && searchDropdown) {
         searchBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            e.stopPropagation();
-            const isActive = searchDropdown.classList.contains('active');
-            closeAllDropdowns(); // ჯერ ვხურავთ ყველას
-            if (!isActive) {
-                searchDropdown.classList.add('active');
+            e.stopPropagation(); // რომ დაკლიკება სხვაგან არ "გავარდეს"
+            searchDropdown.classList.toggle('active');
+            
+            if(searchDropdown.classList.contains('active')) {
                 searchDropdown.querySelector('input').focus();
+            }
+        });
+
+        // თუ ეკრანზე სხვაგან დავაჭერთ, ძიება დაიხუროს
+        document.addEventListener('click', function(e) {
+            if (!searchContainer.contains(e.target)) {
+                searchDropdown.classList.remove('active');
             }
         });
     }
 
-    // 3. კალათის ლოგიკა
-    if (cartBtn && cartDropdown) {
-        cartBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isActive = cartDropdown.classList.contains('active');
-            closeAllDropdowns();
-            if (!isActive) cartDropdown.classList.add('active');
-        });
-    }
+    const cartBtn = document.getElementById('cartBtn');
+const cartDropdown = document.getElementById('cartDropdown');
+const cartWrapper = document.getElementById('cartWrapper');
 
-    // 4. ფავორიტების ლოგიკა
-    if (wishlistBtn && wishlistDropdown) {
-        wishlistBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const isActive = wishlistDropdown.classList.contains('active');
-            closeAllDropdowns();
-            if (!isActive) wishlistDropdown.classList.add('active');
-        });
+cartBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    cartDropdown.classList.toggle('active');
+    
+    // თუ კალათა გაიხსნა, ძიება დაიხუროს (რომ არ გადაიფარონ)
+    if(typeof searchDropdown !== 'undefined') {
+        searchDropdown.classList.remove('active');
     }
+});
 
-    // 5. სხვაგან დაკლიკებაზე დახურვა (უნივერსალური)
-    document.addEventListener('click', function(e) {
-        if (searchContainer && !searchContainer.contains(e.target) && 
-            cartWrapper && !cartWrapper.contains(e.target) && 
-            wishlistWrapper && !wishlistWrapper.contains(e.target)) {
-            closeAllDropdowns();
-        }
-    });
+// სხვაგან დაკლიკებაზე დახურვა
+document.addEventListener('click', function(e) {
+    if (!cartWrapper.contains(e.target)) {
+        cartDropdown.classList.remove('active');
+    }
+});
+
+
+const wishlistBtn = document.getElementById('wishlistBtn');
+const wishlistDropdown = document.getElementById('wishlistDropdown');
+const wishlistWrapper = document.getElementById('wishlistWrapper');
+
+wishlistBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    wishlistDropdown.classList.toggle('active');
+    
+    // სხვა პანელები დავხუროთ
+    if(typeof searchDropdown !== 'undefined') searchDropdown.classList.remove('active');
+    if(typeof cartDropdown !== 'undefined') cartDropdown.classList.remove('active');
+});
+
+// გარეთ დაკლიკებაზე დახურვა
+document.addEventListener('click', function(e) {
+    if (!wishlistWrapper.contains(e.target)) {
+        wishlistDropdown.classList.remove('active');
+    }
+});
 </script>
 
 
