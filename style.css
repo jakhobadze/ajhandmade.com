@@ -106,12 +106,12 @@ body {
     font-family: 'AlgetiCustom', serif; /* ზუსტად ის სახელი, რაც ზემოთ დავწერეთ */
     font-size: 18px;
     font-weight: normal;
-    color: #000000;
+    color: #0B302E;
     text-decoration: none;
     transition: 0.3s;
     text-transform: none; /* Algeti-ს არ უხდება uppercase */
     /* აი ეს ორი ხაზი დაამატე: */
-    -webkit-text-stroke: 0.3px #000000; /* ასოებს ავლებთ თხელ შავ კონტურს */
+    -webkit-text-stroke: 0.3px #0B302E; /* ასოებს ავლებთ თხელ შავ კონტურს */
     letter-spacing: 0.6px; /* რადგან გასქელდა, ასოებს შორის სივრცე ცოტა გავზარდოთ */
 }
 
@@ -124,7 +124,7 @@ body {
     left: 0;
     width: 45px; /* 35-დან 45-მდე გავზარდეთ */
     height: 4px;
-    background-color: #a67c52;
+    background-color: #9D957A;
 }
 
 
@@ -137,12 +137,12 @@ body {
     left: 0;
     width: 35px;
     height: 4px; /* სისქე 3px-დან ავწიეთ 4px-ზე, რომ გასქელებულ შრიფტს მოუხდეს */
-    background-color: #F57E20;
+    background-color: #0B302E;
 }
 
 .main-nav ul li a:hover {
-    color: #F57E20;
-    -webkit-text-stroke: 0.3px #F57E20;;
+    color: #0B302E;
+    -webkit-text-stroke: 0.3px #0B302E;;
 }
 
 /* აქ იწყება იკონები*/
